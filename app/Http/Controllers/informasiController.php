@@ -163,23 +163,19 @@ public function apiInformasiShow()
     ];
    
 
-    try {
-        if ($data) {
+    if ($data) {
             
-            return response()->json([
-                'success' => true,
-                'message' => 'informasi ditampilkan !',
-                'data' => $data
-            ], 201);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'informasi tidak ditampilkan',
-            ], 400);
-           echo("error");
-        }
-    } catch (\Exception $e) {
-        throw new HttpException(500, $e->getMessage());
+        return response()->json([
+            'success' => true,
+            'message' => 'informasi ditampilkan !',
+            'data' => $data
+        ], 201);
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'informasi tidak ditampilkan',
+        ], 400);
+       echo("error");
     }
 
 }

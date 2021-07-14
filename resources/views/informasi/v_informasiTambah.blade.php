@@ -26,7 +26,7 @@
 
 <div class="form-group">
     <label >Descripsi</label>
-    <input name="descripsi" class="form-control @error('descripsi') is-invalid @enderror"  value="{{old('descripsi')}}" >
+    <textarea name="descripsi"  class="form-control @error('descripsi') is-invalid @enderror"  value="{{old('descripsi')}}" ></textarea>
     <div class="text-danger">
         @error('descripsi')
             {{$message}}

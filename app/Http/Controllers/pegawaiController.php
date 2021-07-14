@@ -229,7 +229,20 @@ class pegawaiController extends Controller
         $data = [
             'pegawai' => $this->pegawaiModel->alldata(),
         ];
-        return   response()->json($data);
+        if ($data) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'informasi ditampilkan !',
+                'data' => $data
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'informasi tidak ditampilkan',
+            ], 400);
+           echo("error");
+        }
      }
     
 
@@ -265,6 +278,10 @@ class pegawaiController extends Controller
     // $path= $request->file('foto')->move(public_path("/"),$filename);
     // $photoURL = url('/'.$filename);
     
+    $file= Request()->gambar;
+    $fileName = Request()->judul . '.' . $file->extension();
+    $file->move(public_path('foto_informasi'), $fileName);
+
     $data = [
         'nip' => Request()->nip,
         'nama_pegawai' =>  Request()->nama_pegawai,
@@ -277,7 +294,7 @@ class pegawaiController extends Controller
         'gender' =>  Request()->gender,
         'id_agama' =>  Request()->id_agama,
         'pendidikan' =>  Request()->pendidikan,
-        'foto'=>  Request()->foto,
+        'foto'=>  Request()->fileName,
 
     ];
 

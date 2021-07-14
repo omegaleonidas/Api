@@ -19,7 +19,9 @@
 <tr>
 <th width="100px" > gambar </th>
 <th width="30pxpx" > : </th>
-<th> <img src="{{url('foto_informasi/.$informasi-> gambar')}}"  width="300px"> </th>
+<th> <div class="col-sm 12" >
+<div class="col - sm 4">
+<img src="{{url('foto_informasi/'.$informasi-> gambar)}}" width="150px" ></th>
 </tr>
 
 
