@@ -13,13 +13,18 @@ use App\Http\Controllers\informasiController;
 
 
 
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
-Route::group(['middleware' => ['json.response']], function(){
 
-    // Route::middleware('auth:api')->get('/user', function (Request $request) {
-    //     return $request->user();
-    // });
+
+
+
+Route::group(['middleware' => 'auth:sanctum'], function(){
+
+ 
     Route::post('/pegawaiTambah',[pegawaiController::class,'ApiPegawaiTambah']);;
     Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);;
     Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);;
