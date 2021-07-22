@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 class pegawaiModel extends Model
 {
 
-
-
   protected $table = "t_pegawai";
   protected $primaryKey = 'id_pegawai';
   protected $fillable = [

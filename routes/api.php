@@ -29,14 +29,15 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);;
     Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);;
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);;
-    Route::get('/pegawaiShow',[pegawaiController::class,'ApiPegawaiShow']);;    
-   
+    Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']);;   
+    Route::put('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);;     
+ 
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
 
 
-
+  
 
 
 

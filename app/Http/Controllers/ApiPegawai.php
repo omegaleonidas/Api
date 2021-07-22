@@ -41,6 +41,7 @@ class ApiPegawai extends Controller
     }
 
     public function updateById(Request $request, $id){
+    //    $pegawai = ::find($id);
 
         $pegawai->nip = $request->input('nip');
         $pegawai->nama_peg = $request->input('jabatan_id');

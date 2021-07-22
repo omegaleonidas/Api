@@ -205,7 +205,7 @@ class pegawaiController extends Controller
          
     
         ];
-        $this ->pegawaiModel->editData($id_pegawai,$data);
+        $this ->pegawaiModel->edit($id_pegawai,$data);
      }
  
    
@@ -224,10 +224,10 @@ class pegawaiController extends Controller
         return redirect()->route('pegawai')->with('pesan','Data berhasil di hapus');
      }
 
-     public function ApiPegawaiShow(){
+     public function ApiPegawaiShow($id_pegawai){
 
         $data = [
-            'pegawai' => $this->pegawaiModel->alldata(),
+            'pegawai' => $this->pegawaiModel->detailData($id_pegawai),
         ];
         if ($data) {
             
@@ -341,31 +341,35 @@ class pegawaiController extends Controller
 }
 
 public function ApiPegawaiEdit($id_pegawai)
+
+
 {
+  
+    
  
-    Request()->validate([
-        'nip' => 'required',
-        'nama_pegawai' => 'required',
-        'jabatan_id' => 'required',
-        'email' => 'required',
-        'no_tlp' => 'required',
-        'alamat' => 'required',
-        'tgl_masuk' => 'required',
-        'tmp_lahir' => 'required',
-        'gender' => 'required',
-        'id_agama' => 'required',
-        'pendidikan' => 'required',
+//     Request()->validate([
+//         'nip' => 'required',
+//         'nama_pegawai' => 'required',
+//         'jabatan_id' => 'required',
+//         'email' => 'required',
+//         'no_tlp' => 'required',
+//         'alamat' => 'required',
+//         'tgl_masuk' => 'required',
+//         'tmp_lahir' => 'required',
+//         'gender' => 'required',
+//         'id_agama' => 'required',
+//         'pendidikan' => 'required',
        
-    ]
-);
+//     ]
+// );
  //jika falidasi tidak ada maka simpan data
  //upload foto 
 
- if(Request()-> foto <> ""){
+//  if(Request()-> foto <> ""){
 
-    $file= Request()->foto;
-    $fileName = Request()->nip . '.' . $file->extension();
-    $file->move(public_path('foto_pegawai'), $fileName);
+//     $file= Request()->foto;
+//     $fileName = Request()->nip . '.' . $file->extension();
+//     $file->move(public_path('foto_pegawai'), $fileName);
 
     $data = [
         'nip' => Request()->nip,
@@ -384,24 +388,23 @@ public function ApiPegawaiEdit($id_pegawai)
     $this ->pegawaiModel->editData($id_pegawai,$data);
    
 
- }
+ //}
    
    if ($data) {
-            
+          
     return response()->json([
         'success' => true,
-        'message' => 'absen Berhasil Disimpan!',
+        'message' => 'pegawai Berhasil Disimpan!',
         'data' => $data
     ], 201);
 } else {
     return response()->json([
         'success' => false,
-        'message' => 'absen Gagal Disimpan!',
+        'message' => 'pegawai Gagal Disimpan!',
     ], 400);
 }
 
 }
-
 
 
    
