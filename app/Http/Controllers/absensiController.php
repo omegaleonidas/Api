@@ -131,5 +131,33 @@ class absensiController extends Controller
 
      }
 
+     public function detailAbsensiShow($id_absensi){
+
+        if( !$this->absensiModel->detailData($id_absensi)){
+            abort(404);
+        }
+
+        $data = [
+            'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+        ];
+        if ($data) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'informasi riwayat!',
+                'data' => $data
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'informasi tidak ditampilkan',
+            ], 400);
+        }
+
+    }
+
+
+     
+
    
 }

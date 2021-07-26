@@ -35,28 +35,25 @@ class pegawaiModel extends Model
       }
 
 
-           
       
      public function detailData($id_pegawai){
           return  DB::table('t_pegawai')
           ->leftJoin('t_jabatan', 't_jabatan.id_jabatan', '=', 't_pegawai.jabatan_id')
              ->leftJoin('t_agama', 't_agama.id_agama', '=', 't_pegawai.id_agama')
           ->where('id_pegawai', $id_pegawai)
-         
-          
           ->first();
         }
 
  
-
     public function addData($data){
         return  DB::table('t_pegawai')->insert($data);
     }
+    
     public function editData($id_pegawai,$data){
         return  DB::table('t_pegawai')
-       
-            ->where('id_pegawai',$id_pegawai) ->update($data);
+                   ->where('id_pegawai',$id_pegawai) ->update($data);
     }
+
 
     public function deleteData($id_pegawai){
         return  DB::table('t_pegawai')  ->where('id_pegawai',$id_pegawai) ->delete();

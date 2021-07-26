@@ -95,7 +95,7 @@ class cutiController extends Controller
             'tanggal_mulai' => 'required',
             'tanggal_akhir' => 'required',
             'tanggal' => 'required',
-            'tanggal_acc' => 'required',
+        
             
         ],
     );
@@ -114,7 +114,7 @@ class cutiController extends Controller
         $tanggal_akhir = $request->input('tanggal_akhir');
         
         $tanggal = $request->input('tanggal');
-        $tanggal_acc = $request->input('tanggal_acc');
+      
 
       
    
@@ -128,7 +128,7 @@ class cutiController extends Controller
             'tanggal_mulai' => $tanggal_mulai,
             'tanggal_akhir' => $tanggal_akhir,
             'tanggal' => $tanggal,
-            'tanggal_acc' => $tanggal_acc
+                
         ];
 
         $this->cutiModel->addData($data);

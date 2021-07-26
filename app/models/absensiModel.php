@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class absensiModel extends Model
 {
+
+
+  protected $table = "t_absensi";
+  protected $primaryKey = 'id_absensi';
+  protected $fillable = [
+      'absen'
+  ];
+
+
     public function allData(){
       return  DB::table('t_absensi')->get();
     }
@@ -23,4 +32,10 @@ class absensiModel extends Model
   public function deleteData($id_absensi){
       return  DB::table('t_absensi')  ->where('id_absensi',$id_absensi) ->delete();
   }
+
+  public function detailDataRiwayat($id_absensi){
+    return  DB::table('t_absensi') ->where('id_pegawai', $id_absensi) ->get() ;
+}
+
+
 }
