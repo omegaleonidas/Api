@@ -14,8 +14,8 @@
     <th>tanggal</th>
     <th>jam masuk</th>
     <th>jam pulang </th>
-    <th>alamat </th>
-    <th>keterangan</th>
+  
+  
     <th>aksi</th>
     </tr>
 </thead>
@@ -29,12 +29,12 @@
         @foreach ($absensi as $data)
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$data -> id_pegawai}}</td>
+            <td>{{$data -> nip}}</td>
             <td>{{$data -> tanggal}}</td>
             <td>{{$data -> jam_masuk}}</td>
             <td>{{$data -> jam_selesai}}</td>
-            <td>{{$data -> alamat}}</td>
-            <td>{{$data -> keterangan}}</td>
+          
+     
           
             <td>
             <a href="/absensi/detail/{{$data -> id_absensi}}" class="btn btn-sm btn-success" > detail </a>
@@ -59,7 +59,7 @@
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">{{$data->id_pegawai}}</h4>
+              <h4 class="modal-title">{{$data->nip}}</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

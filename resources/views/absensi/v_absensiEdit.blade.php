@@ -11,10 +11,10 @@
 <div class="col-sm-6">
 
 <div class="form-group">
-    <label >id pengawai</label>
-    <input name="id_pegawai" class="form-control  @error('id_pegawai') is-invalid @enderror" value="{{$absensi -> id_pegawai}}">
+    <label >nip</label>
+    <input name="nip" class="form-control  @error('nip') is-invalid @enderror" value="{{$absensi -> nip}}">
 <div class="text-danger">
-        @error('id_pegawai')
+        @error('nip')
             {{$message}}
         @enderror
 </div>

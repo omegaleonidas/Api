@@ -20,7 +20,9 @@ class cutiModel extends Model
       }
       
       public function detailData($id_cuti){
-          return  DB::table('t_cuti')->where('id_cuti', $id_cuti)->first();
+          return  DB::table('t_cuti')
+          ->leftJoin('t_pegawai', 't_pegawai.nip', '=', 't_cuti.nip')
+          ->where('id_cuti', $id_cuti)->first();
   
       }
       public function editData($id_cuti,$data){

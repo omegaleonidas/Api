@@ -31,12 +31,16 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);
     Route::get('/ApiAbsensiShow',[absensiController::class,'ApiAbsensiShow']);
     Route::get('/detailAbsensiShow/{id_pegawai}',[absensiController::class,'detailAbsensiShow']);
-    
+    Route::post('/ApiAbsensi',[absensiController::class,'ApiAbsensi']); 
+    // Route::post('/InsertDataSore/{}',[absensiController::class,'ApiAbsensi']); 
+    Route::put('/ApiAbsensiEdit/{id_absensi}',[absensiController::class,'ApiAbsensiEdit']);  
+  
 
 
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);
     Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']); 
-    Route::put('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);    
+    Route::put('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);  
+    Route::put('/ApiPegawaTambah',[pegawaiController::class,'ApiPegawaiTambah']);  
  
     Route::get('/logout', [AuthController::class, 'logout']);
 });

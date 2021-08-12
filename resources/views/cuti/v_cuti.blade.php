@@ -41,7 +41,7 @@
          
            
             <td>{{$data -> tanggal}}</td>
-            <td>{{$data -> tanggal_acc}}</td>
+            <td>{{$data -> acc}}</td>
              <td>
             <a href="/cuti/detail/{{$data -> id_cuti}}" class="btn btn-sm btn-success" > detail </a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id_cuti}}">

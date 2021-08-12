@@ -53,7 +53,7 @@ class absensiController extends Controller
     public function update($id_absensi){
 
         Request()->validate([
-             'id_pegawai' => 'required',
+             'nip' => 'required',
              'tanggal' => 'required',
              'jam_masuk' => 'required',
              'jam_selesai' => 'required',
@@ -62,7 +62,7 @@ class absensiController extends Controller
              
          ],[
  
-             'id_pegawai.required' => 'wajib di isi!',
+             'nip.required' => 'wajib di isi!',
               'tanggal.required' => ' wajib di isi',
               'jam_masuk.required' => ' wajib di isi',
               'jam_selesai.required' => ' wajib di isi',
@@ -76,7 +76,7 @@ class absensiController extends Controller
 
         
         $data = [
-            'id_pegawai' => Request()->id_pegawai,
+            'nip' => Request()->nip,
             'tanggal' => Request()-> tanggal,
             'jam_masuk' => Request()-> jam_masuk ,
             'jam_selesai' => Request()-> jam_selesai ,
@@ -133,7 +133,7 @@ class absensiController extends Controller
 
      public function detailAbsensiShow($id_absensi){
 
-        if( !$this->absensiModel->detailData($id_absensi)){
+        if( !$this->absensiModel->detailDataRiwayat($id_absensi)){
             abort(404);
         }
 
@@ -155,6 +155,162 @@ class absensiController extends Controller
         }
 
     }
+
+    public function ApiAbsensi()
+
+    {
+          $data = [
+            'absensi' => $this->absensiModel->alldata(),
+        ];
+       
+        
+        Request()->validate([
+      
+            'nip' => 'required',
+          
+            'tanggal' => 'required',
+            'jam_masuk' => 'required',
+          
+            'alamat' => 'required',
+            'keterangan'=>'required'
+        
+            
+        ],
+    );
+
+    $request = Request();
+
+  
+    $nip = $request->input('nip');
+        
+        $tanggal = $request->input('tanggal');
+        
+        $jam_masuk = $request->input('jam_masuk');
+        
+        $jam_selesai = $request->input('jam_selesai');
+        
+        $alamat = $request->input('alamat');
+        
+        $keterangan = $request->input('keterangan');
+
+ 
+        
+
+        $data =  [
+           
+            'nip' =>  $nip,
+            'tanggal' => $tanggal,
+            'jam_masuk' => $jam_masuk,
+             'jam_selesai' => $jam_selesai,
+            'alamat' => $alamat,
+            'keterangan' => $keterangan,
+                
+        ];
+
+        $data1 = absensiModel::create($data);
+        $id_absensi = $data1->id_absensi;
+
+
+      
+        if ($data1) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'data absensi Berhasil Disimpan!',
+                'data' => $data1
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'data absensi Gagal Disimpan!',
+            ], 400);
+        }
+
+       
+    
+    }
+
+
+
+
+    public function InsertDataSore($id_absensi){
+
+      
+        $data = [
+            
+            'jam_selesai' => Request()-> jam_selesai,
+           
+                     
+        ];
+
+
+        $this ->absensiModel->editData($id_absensi,$data);
+     
+ 
+   
+        if ($data) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'data absensi Berhasil Diedit!',
+                'data' => $data
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'data absensi Gagal Disimpan!',
+            ], 404);
+        }
+     }
+
+
+
+     public function ApiAbsensiEdit($id_absensi){
+  
+    
+ 
+
+    $data = [
+       
+        'jam_selesai' => Request()-> jam_selesai,
+        'alamat_sore' => Request()-> alamat_sore,
+        'keterangan_sore' => Request()-> keterangan_sore,
+        
+       
+    ];
+    $this ->absensiModel->editData($id_absensi,$data);
+   
+ 
+   
+   if ($data) {
+          
+    return response()->json([
+        'success' => true,
+        'message' => 'absensi Berhasil Disimpan!',
+        'data' => $data
+    ], 201);
+} else {
+    return response()->json([
+        'success' => false,
+        'message' => 'absensi Gagal Disimpan!',
+    ], 400);
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
      

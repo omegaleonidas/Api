@@ -29,7 +29,7 @@
         @foreach ($absensi as $data)
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$data -> id_pegawai}}</td>
+            <td>{{$data -> nip}}</td>
             <td>{{$data -> tanggal}}</td>
             <td>{{$data -> jam_masuk}}</td>
             <td>{{$data -> jam_selesai}}</td>

@@ -7,7 +7,7 @@
 <table  class="table" >
 
 <tr>
-<th width="100px" > nip </th>
+<th width="100px" > nama </th>
 <th width="30pxpx" > : </th>
 <th  >  {{$cuti-> nip}}</th>
 </tr>
@@ -42,9 +42,9 @@
 <th  >  {{$cuti-> tanggal}}</th>
 </tr>
 <tr>
-<th width="100px" > tanggal acc </th>
+<th width="100px" > acc </th>
 <th width="30pxpx" > : </th>
-<th  >  {{$cuti-> tanggal_acc}}</th>
+<th  >  {{$cuti-> acc}}</th>
 </tr>
 
 <tr>

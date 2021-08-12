@@ -12,8 +12,9 @@ class absensiModel extends Model
 
   protected $table = "t_absensi";
   protected $primaryKey = 'id_absensi';
+
   protected $fillable = [
-      'absen'
+      'id_absensi','nip','tanggal','jam_masuk','jam_selesai','alamat','keterangan'
   ];
 
 
@@ -22,11 +23,15 @@ class absensiModel extends Model
     }
     
     public function detailData($id_absensi){
-        return  DB::table('t_absensi')->where('id_absensi', $id_absensi)->first();
+        return  DB::table('t_absensi')
+        ->leftJoin('t_pegawai', 't_pegawai.nip', '=', 't_absensi.nip')
+        ->where('id_absensi', $id_absensi)->first();
 
     }
+
+    
     public function editData($id_absensi,$data){
-      return  DB::table('t_absensi')  ->where('id_absensi',$id_absensi) ->update($data);
+      return  DB::table('t_absensi') ->where('id_absensi',$id_absensi) ->update($data);
   }
 
   public function deleteData($id_absensi){
@@ -34,8 +39,21 @@ class absensiModel extends Model
   }
 
   public function detailDataRiwayat($id_absensi){
-    return  DB::table('t_absensi') ->where('id_pegawai', $id_absensi) ->get() ;
+    return  DB::table('t_absensi') ->where('nip', $id_absensi) ->get() ;
 }
+
+    public function addData($data) {
+      return  DB::table('t_absensi')->insert($data);
+    }
+
+    public function detailAbsensiData($id_absensi){
+      return  DB::table('t_absensi')
+     
+       
+      ->where('id_absensi', $id_absensi)
+      ->first();
+    }
+
 
 
 }
