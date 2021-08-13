@@ -83,14 +83,45 @@ public function jumlahTerlambat($id_absensi){
   ] ) ->count();
 }
 
-public function jumlahIzin($id_abnsensi){
-  return  DB::table('t_absensi')  ->where([
-      ['nip',  $id_absensi  ],
-      ['keterangan', '=', 'alfa' ],
+public function jumlahIzin($id_absensi){
+  return  DB::table('t_cuti')  ->where([
+      ['nip',  $id_absensi  ]
+     
 
 
   ] ) ->count();
 }
+
+
+public function jumlahAlfaSore($id_absensi){
+  return  DB::table('t_absensi')  ->where([
+      ['nip', $id_absensi],
+      ['keterangan_sore', '=', 'alfa' ],
+
+
+  ] ) ->count();
+}
+public function jumlahHadirSore($id_absensi){
+return  DB::table('t_absensi')  ->where([
+    ['nip',  $id_absensi ],
+    ['keterangan_sore', '=', 'hadir' ],
+
+
+] ) ->count();
+}
+
+public function jumlahTerlambatSore($id_absensi){
+return  DB::table('t_absensi')  ->where([
+  ['nip',  $id_absensi  ],
+  ['keterangan_sore', '=', 'terlambat' ],
+
+
+] ) ->count();
+}
+
+
+
+
 
 
 

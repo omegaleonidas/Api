@@ -310,19 +310,25 @@ public function ApiHitung($id_absensi){
         'alfa' => $this->absensiModel->jumlahAlfa($id_absensi),
         'hadir' => $this->absensiModel->jumlahHadir($id_absensi),
         'terlambat' => $this->absensiModel->jumlahTerlambat($id_absensi),
+        'cuti' => $this->absensiModel->jumlahIzin($id_absensi),
+        'alfa_sore' => $this->absensiModel->jumlahAlfaSore($id_absensi),
+        'hadir_sore' => $this->absensiModel->jumlahHadirSore($id_absensi),
+        'terlambat_sore' => $this->absensiModel->jumlahTerlambatSore($id_absensi),
+       
+        
     ];
 
     if ($data) {
         
         return response()->json([
             'success' => true,
-            'message' => 'Pegawai Berhasil ditampilkan !',
+            'message' => 'data Berhasil ditampilkan !',
             'data' => $data
         ], 201);
     } else {
         return response()->json([
             'success' => false,
-            'message' => 'Pegawai tidak ditampilkan',
+            'message' => 'data tidak ditampilkan',
         ], 400);
        echo("error");
     }
