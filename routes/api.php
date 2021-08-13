@@ -26,7 +26,8 @@ use App\Http\Controllers\absensiController;
 Route::group(['middleware' => 'auth:sanctum'], function(){
 
  
-    Route::post('/pegawaiTambah',[pegawaiController::class,'ApiPegawaiTambah']);
+
+    Route::post('/ApiPegawai',[ApiPegawai::class,'create']);
     Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);
     Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);
     Route::get('/ApiAbsensiShow',[absensiController::class,'ApiAbsensiShow']);
@@ -35,6 +36,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     // Route::post('/InsertDataSore/{}',[absensiController::class,'ApiAbsensi']); 
     Route::put('/ApiAbsensiEdit/{id_absensi}',[absensiController::class,'ApiAbsensiEdit']);  
   
+    Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
+    
 
 
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);
@@ -44,6 +47,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
  
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+
 
 
 

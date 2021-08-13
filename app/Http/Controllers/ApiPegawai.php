@@ -8,24 +8,48 @@ use App\guru;
 class ApiPegawai extends Controller
 {
     public function create(Request $request){
-  
-        $pegawai = new guru();
+
+
+
+    //jika falidasi tidak ada maka simpan data
+    //upload foto 
+
+
+    
+     $pegawai = new guru();
         
-        $pegawai->nip = $request->input('nip');
-        $pegawai->nama_peg = $request->input('jabatan_id');
-        $pegawai->mengajar = $request->input('mengajar');
-        $pegawai->no_tlp = $request->input('no_tlp');
-        $pegawai->alamat = $request->input('alamat');
-        $pegawai->tgl_masuk = $request->input('tgl_masuk');
-        $pegawai->tmp_lahir = $request->input('tmp_lahir');
-        $pegawai->agama = $request->input('agama');
-        $pegawai->pendidikan = $request->input('pendidikan');
-        $pegawai->password = $request->input('password');
-        $pegawai->password = $request->input('password');
-        $pegawai->foto = $request->input('foto');
+     $pegawai->nip = $request->input('nip');
+     $pegawai->nama_pegawai = $request->input('nama_pegawai');
+     $pegawai->jabatan_id = $request->input('jabatan_id');
+     $pegawai->email = $request->input('email');
+     $pegawai->no_tlp = $request->input('no_tlp');
+     $pegawai->alamat = $request->input('alamat');
+     $pegawai->tgl_masuk = $request->input('tgl_masuk');
+     $pegawai->tmp_lahir = $request->input('tmp_lahir');
+     $pegawai->id_agama = $request->input('id_agama');
+     $pegawai->gender = $request->input('gender');
+     $pegawai->pendidikan = $request->input('pendidikan');
+     $filename = $request->input('foto');
+    //  $path= $request->file('foto')->move(public_path("/"),$filename);
+    //  $photoURL = url('/'.$filename);
+    //  $pegawai ->foto = $path;
+     
 
         $pegawai->save();
-        return response()->json($pegawai);
+        if ($pegawai) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'pegawai tambah!',
+                'data' => $pegawai
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'pegawai tidak di ditampilkan',
+            ], 400);
+        }
+
     }
 
     public function show(){
@@ -40,24 +64,36 @@ class ApiPegawai extends Controller
         return response()->json($pegawai);
     }
 
-    public function updateById(Request $request, $id){
+    public function updateById(Request $request, $id_pegawai){
   
 
+        $pegawai = new guru();
         $pegawai->nip = $request->input('nip');
-        $pegawai->nama_peg = $request->input('jabatan_id');
-        $pegawai->mengajar = $request->input('mengajar');
+        $pegawai->nama_pegawai = $request->input('nama_pegawai');
+        $pegawai->jabatan_id = $request->input('jabatan_id');
+        $pegawai->email = $request->input('email');
         $pegawai->no_tlp = $request->input('no_tlp');
         $pegawai->alamat = $request->input('alamat');
         $pegawai->tgl_masuk = $request->input('tgl_masuk');
         $pegawai->tmp_lahir = $request->input('tmp_lahir');
-        $pegawai->agama = $request->input('agama');
+        $pegawai->id_agama = $request->input('id_agama');
+        $pegawai->gender = $request->input('gender');
         $pegawai->pendidikan = $request->input('pendidikan');
-        $pegawai->password = $request->input('password');
-        $pegawai->password = $request->input('password');
-        $pegawai->foto = $request->input('foto');
-
+       
         $pegawai-> save();
-        return response()->json($pegawai);
+        if ($pegawai) {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'informasi riwayat!',
+                'data' => $pegawai
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'informasi tidak ditampilkan',
+            ], 400);
+        }
 
     }
 

@@ -44,6 +44,14 @@ class pegawaiModel extends Model
           ->first();
         }
 
+        public function detailDataApi($id_pegawai){
+          return  DB::table('t_pegawai')
+          ->leftJoin('t_jabatan', 't_jabatan.id_jabatan', '=', 't_pegawai.jabatan_id')
+             ->leftJoin('t_agama', 't_agama.id_agama', '=', 't_pegawai.id_agama')
+          ->where('nip', $id_pegawai)
+          ->first();
+        }
+
  
     public function addData($data){
         return  DB::table('t_pegawai')->insert($data);
