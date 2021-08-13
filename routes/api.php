@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
     
 
+    Route::get('/ApiHitung/{id_pegawai}',[absensicontroller::class,'ApiHitung']);
 
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);
     Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']); 

@@ -298,22 +298,42 @@ class absensiController extends Controller
 
 
 
+
+
 }
 
 
 
+public function ApiHitung($id_absensi){
+
+    $data = [
+        'alfa' => $this->absensiModel->jumlahAlfa($id_absensi),
+        'hadir' => $this->absensiModel->jumlahHadir($id_absensi),
+        'terlambat' => $this->absensiModel->jumlahTerlambat($id_absensi),
+    ];
+
+    if ($data) {
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Pegawai Berhasil ditampilkan !',
+            'data' => $data
+        ], 201);
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'Pegawai tidak ditampilkan',
+        ], 400);
+       echo("error");
+    }
 
 
 
 
 
-
-
-
-
-
-
-     
 
    
+
+   
+}
 }

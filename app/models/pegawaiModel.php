@@ -61,9 +61,15 @@ class pegawaiModel extends Model
         return  DB::table('t_pegawai')
                    ->where('id_pegawai',$id_pegawai) ->update($data);
     }
+    public function editDataApi($id_pegawai,$data){
+      return  DB::table('t_pegawai')
+                 ->where('nip',$id_pegawai) ->update($data);
+  }
 
 
     public function deleteData($id_pegawai){
         return  DB::table('t_pegawai')  ->where('id_pegawai',$id_pegawai) ->delete();
     }
+
+
 }

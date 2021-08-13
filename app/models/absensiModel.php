@@ -52,7 +52,47 @@ class absensiModel extends Model
        
       ->where('id_absensi', $id_absensi)
       ->first();
+    
+    
     }
+
+
+    public function jumlahAlfa($id_absensi){
+      return  DB::table('t_absensi')  ->where([
+          ['nip', $id_absensi],
+          ['keterangan', '=', 'alfa' ],
+
+
+      ] ) ->count();
+  }
+  public function jumlahHadir($id_absensi){
+    return  DB::table('t_absensi')  ->where([
+        ['nip',  $id_absensi ],
+        ['keterangan', '=', 'hadir' ],
+
+
+    ] ) ->count();
+}
+
+public function jumlahTerlambat($id_absensi){
+  return  DB::table('t_absensi')  ->where([
+      ['nip',  $id_absensi  ],
+      ['keterangan', '=', 'terlambat' ],
+
+
+  ] ) ->count();
+}
+
+public function jumlahIzin($id_abnsensi){
+  return  DB::table('t_absensi')  ->where([
+      ['nip',  $id_absensi  ],
+      ['keterangan', '=', 'alfa' ],
+
+
+  ] ) ->count();
+}
+
+
 
 
 

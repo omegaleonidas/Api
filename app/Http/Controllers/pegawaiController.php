@@ -315,7 +315,7 @@ public function ApiPegawaiEdit($id_pegawai)
      
 
     ];
-    $this ->pegawaiModel->editData($id_pegawai,$data);
+    $this ->pegawaiModel->editDataApi($id_pegawai,$data);
  
 
 
@@ -335,6 +335,29 @@ public function ApiPegawaiEdit($id_pegawai)
 }
 
 }
+
+
+
+public function ApiTambah(){
+
+    $data = [
+        'pegawai' => $this->pegawaiModel->jumlahData(),
+    ];
+    if ($data) {
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Pegawai Berhasil ditampilkan !',
+            'data' => $data
+        ], 201);
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'Pegawai tidak ditampilkan',
+        ], 400);
+       echo("error");
+    }
+ }
 
 
    
