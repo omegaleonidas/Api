@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\absensiController;
 use App\Http\Controllers\informasiController;
 use App\Http\Controllers\jabatanController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\agamaController;
 use App\Http\Controllers\cutiController;
 use App\Http\Controllers\pegawaiController;
@@ -98,6 +99,16 @@ Route::get('/cuti/detail/{id_absen}',[cutiController::class,'detailcuti']);;
 Route::get('/cuti/edit/{id_cuti}',[cutiController::class,'edit']);;
 Route::post('/cuti/update/{id_cuti}',[cutiController::class,'update']);;
 Route::get('/cuti/delete/{id_cuti}',[cutiController::class,'delete']);;
+
+
+//user
+Route::get('/user',[RegisterController::class,'index'])->name('user');;
+Route::get('/user/detail/{id_user}',[RegisterController::class,'detailUser']);;
+Route::get('/user/add',[RegisterController::class,'tambah']);;
+Route::post('/user/insert',[RegisterController::class,'create']);;
+Route::get('/user/edit/{id_user}',[RegisterController::class,'edit']);;
+Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
+Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
 
 
 
