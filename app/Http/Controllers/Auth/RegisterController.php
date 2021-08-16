@@ -26,20 +26,12 @@ class RegisterController extends Controller
     public function insert(){
 
         Request()->validate([
-             'judul' => 'required|unique:t_user|min:5|max:255',
-             'descripsi' => 'required',
-             'gambar' => 'required|mimes:jpg,jpeg,bmp,png| max:1024',
-         ],[
- 
-             'judul.required' => 'wajib di isi!',
-             'judul.unique' => ' judul sudah ada! ',
-             'judul.min' =>' judul kurang 5 huruf!',
-             'judul.max' => ' judul lebih dari 255',
-             'descripsi.required' => ' wajib di isi',
-             'gambar.required' => ' wajib di isi',
-             'gambar.mimes' => ' harus bertype jpg,jpeg,bmp,png ',
-         ]
-     );
+            'name' => ['required', 'string', 'max:255'],
+            'nip' => ['required'],
+            'nohp' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
  
      //jika falidasi tidak ada maka simpan data
      //upload gambar 
@@ -164,9 +156,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
  
-     //jika falidasi tidak ada maka simpan data
-     //upload gambar 
- 
+     
     
      
         $data = [
@@ -174,7 +164,7 @@ class RegisterController extends Controller
             'nip' => Request()->nip,
             'nohp' => Request()->nohp,
             'email' => Request()->email,
-            'password' => Request()->password,
+            'password' => Hash::make(Request()->password),
 
           
          
@@ -196,6 +186,8 @@ class RegisterController extends Controller
         $this ->userModel->deleteData($id_user);
         return redirect()->route('user')->with('pesan','Data berhasil di hapus');
      }
+
+    
 
    
 

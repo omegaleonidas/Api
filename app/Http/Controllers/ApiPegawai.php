@@ -29,10 +29,11 @@ class ApiPegawai extends Controller
      $pegawai->id_agama = $request->input('id_agama');
      $pegawai->gender = $request->input('gender');
      $pegawai->pendidikan = $request->input('pendidikan');
-     $filename = $request->input('foto');
-    //  $path= $request->file('foto')->move(public_path("/"),$filename);
-    //  $photoURL = url('/'.$filename);
-    //  $pegawai ->foto = $path;
+
+  
+     $result= $request->file('foto')->store('apiDocs');
+     $pegawai->foto = $result;
+     
      
 
         $pegawai->save();
