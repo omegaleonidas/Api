@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
  
 
-    Route::post('/ApiPegawai',[ApiPegawai::class,'create']);
+    Route::post('/ApiPegawai',[ApiPegawai::class,'insert']);
     Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);
     Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);
     Route::get('/ApiAbsensiShow',[absensiController::class,'ApiAbsensiShow']);
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);
     Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']); 
-    Route::put('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);  
+    Route::post('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);  
     Route::put('/ApiPegawaTambah',[pegawaiController::class,'ApiPegawaiTambah']);  
  
     Route::get('/logout', [AuthController::class, 'logout']);

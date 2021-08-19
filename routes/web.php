@@ -9,6 +9,7 @@ use App\Http\Controllers\agamaController;
 use App\Http\Controllers\cutiController;
 use App\Http\Controllers\pegawaiController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\printController;
 use App\Http\Middleware;
 
 
@@ -40,12 +41,6 @@ Route::get('/pegawai/delete/{id_pegawai}',[pegawaiController::class,'delete']);;
 //api pegawai
 Route::get('/pegawaiShow',[pegawaiController::class,'ApiPegawaiShow']);;
 Route::post('/pegawaiTambah',[pegawaiController::class,'ApiPegawaiTambah']);;
-
-
-
-
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/',[HomeController::class,'index']);
 Route::get('/absensi',[absensiController::class,'index'])->name('absensi');;
@@ -84,8 +79,6 @@ Route::post('/jabatan/insert',[jabatanController::class,'insert']);;
 Route::get('/jabatan/edit/{id_jabatan}',[jabatanController::class,'edit']);;
 Route::post('/jabatan/update/{id_jabatan}',[jabatanController::class,'update']);;
 Route::get('/jabatan/delete/{id_jabatan}',[jabatanController::class,'delete']);;
-
-
 Route::get('/ApiJabatanView',[jabatanController::class,'ApiJabatanView']);;
 Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);;
 Route::get('/ApiJabatanDelete',[jabatanController::class,'ApiJabatanDelete']);;
@@ -109,6 +102,9 @@ Route::post('/user/insert',[RegisterController::class,'create']);;
 Route::get('/user/edit/{id_user}',[RegisterController::class,'edit']);;
 Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
 Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
+
+
+Route::get('/report',[printController::class,'index'])->name('print');;
 
 
 

@@ -81,7 +81,9 @@ class absensiController extends Controller
             'jam_masuk' => Request()-> jam_masuk ,
             'jam_selesai' => Request()-> jam_selesai ,
             'alamat' => Request()-> alamat ,
+            'alamat_sore' => Request()-> alamat_sore ,
             'keterangan' => Request()-> keterangan ,
+            'keterangan_sore' => Request()-> keterangan_sore ,
          
     
         ];

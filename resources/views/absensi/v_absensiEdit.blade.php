@@ -68,10 +68,32 @@
 </div>
 
 <div class="form-group">
+    <label >alamat sore</label>
+    <input name="alamat_sore" class="form-control  @error('alamat_sore') is-invalid @enderror" value="{{$absensi -> alamat_sore}}">
+<div class="text-danger">
+        @error('alamat_sore')
+            {{$message}}
+        @enderror
+</div>
+
+</div>
+
+<div class="form-group">
     <label >keterangan</label>
     <input name="keterangan" class="form-control  @error('keterangan') is-invalid @enderror" value="{{$absensi -> keterangan}}">
 <div class="text-danger">
         @error('keterangan')
+            {{$message}}
+        @enderror
+</div>
+
+</div>
+
+<div class="form-group">
+    <label >keterangan sore</label>
+    <input name="keterangan_sore" class="form-control  @error('keterangan_sore') is-invalid @enderror" value="{{$absensi -> keterangan_sore}}">
+<div class="text-danger">
+        @error('keterangan_sore')
             {{$message}}
         @enderror
 </div>

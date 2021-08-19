@@ -299,7 +299,15 @@ public function ApiPegawaiEdit($id_pegawai)
 
 
 {
-  
+
+
+    if(Request()-> foto <> ""){
+
+    $file= Request()->foto;
+    $fileName = Request()->nip . '.' . $file->extension();
+    $file->move(public_path('foto_pegawai'), $fileName);
+
+
       $data = [
         'nip' =>Request()->nip,
         'nama_pegawai' =>  Request()->nama_pegawai,
@@ -312,9 +320,35 @@ public function ApiPegawaiEdit($id_pegawai)
         'gender' =>  Request()->gender,
         'id_agama' =>  Request()->id_agama,
         'pendidikan' =>  Request()->pendidikan,
+        'foto'=>  $fileName,
+        
      
 
     ];
+
+    $this ->pegawaiModel->editDataApi($id_pegawai,$data);
+ 
+
+}else{
+
+    $data = [
+        'nip' =>Request()->nip,
+        'nama_pegawai' =>  Request()->nama_pegawai,
+        'jabatan_id' =>  Request()->jabatan_id,
+        'email' =>  Request()->email,
+        'no_tlp' =>  Request()->no_tlp,
+        'alamat' =>  Request()->alamat,
+        'tgl_masuk' => Request()->tgl_masuk,
+        'tmp_lahir' => Request()->tmp_lahir,
+        'gender' =>  Request()->gender,
+        'id_agama' =>  Request()->id_agama,
+        'pendidikan' =>  Request()->pendidikan,
+       
+    ];
+
+
+}
+
     $this ->pegawaiModel->editDataApi($id_pegawai,$data);
  
 
@@ -323,7 +357,7 @@ public function ApiPegawaiEdit($id_pegawai)
             
     return response()->json([
         'success' => true,
-        'message' => 'Pegawai Berhasil ditampilkan !',
+        'message' => 'Pegawai Berhasil diubah !',
         'data' => $data
     ], 201);
 } else {
