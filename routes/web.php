@@ -104,7 +104,7 @@ Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
 Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
 
 
-Route::get('/report',[printController::class,'index'])->name('print');;
+Route::get('/report/{id_absensi}',[printController::class,'detailAbsensi'])->name('print');;
 
 
 
