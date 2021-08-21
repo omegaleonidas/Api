@@ -31,13 +31,13 @@
 <tr>
 <th width="100px" > alamat </th>
 <th width="30pxpx" > : </th>
-<th  >  {{$absensi-> alamat_sore}}</th>
+<th  >  {{$absensi->alamat}}</th>
 </tr>
 
 <tr>
 <th width="100px" > alamat sore</th>
 <th width="30pxpx" > : </th>
-<th  >  {{$absensi-> alamat}}</th>
+<th  >  {{$absensi->  alamat_sore}}</th>
 </tr>
 
 <tr>

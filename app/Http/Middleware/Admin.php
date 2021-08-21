@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
+
 
 class Admin
 {
@@ -17,9 +19,10 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
 
-        if(auth()->user()->level==1){
-            return $next($request);
-        }
+
+        // if(Auth::user()->level == 1){
+        //     return $next($request);
+        // }
         return redirect('/');
     }
 

@@ -62,31 +62,13 @@ class pegawaiController extends Controller
             'jabatan_id' => 'required',
             'email' => 'required',
             'no_tlp' => 'required',
-            'alamat' => 'required',
+           
             'tgl_masuk' => 'required',
             'tmp_lahir' => 'required',
             'gender' => 'required',
             'id_agama' => 'required',
             'pendidikan' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg,bmp,png| max:1024',
-        ],[
-
-            'nip.required' => 'wajib di isi!',
-            'nip.unique' => ' nip sudah ada! ',
-            'nip.min' =>' nip kurang 5 huruf!',
-            'nip.max' => ' nip lebih dari 255',
-            'nama_pegawai.required' => ' wajib di isi',
-            'jabatan_id.required' => ' wajib di isi',
-            'email.required' => ' wajib di isi',
-            'no_tlp.required' => ' wajib di isi',
-            'alamat.required' => ' wajib di isi',
-            'tgl_masuk.required' => ' wajib di isi',
-            'tmp_lahir.required' => ' wajib di isi',
-            'gender.required' => ' wajib di isi',
-            'id_agama.required' => ' wajib di isi',
-            'pendidikan.required' => ' wajib di isi',
-            'foto.required' => ' wajib di isi',
-            'foto.mimes' => ' harus bertype jpg,jpeg,bmp,png ',
+            'foto' => 'required|mimes:jpg,jpeg,bmp,png| ',
         ]
     );
 
@@ -104,7 +86,7 @@ class pegawaiController extends Controller
         'jabatan_id' =>  Request()->jabatan_id,
         'email' =>  Request()->email,
         'no_tlp' =>  Request()->no_tlp,
-        'alamat' =>  Request()->alamat,
+        'alamat_pegawai' =>  Request()->alamat_pegawai,
         'tgl_masuk' => Request()->tgl_masuk,
         'tmp_lahir' => Request()->tmp_lahir,
         'gender' =>  Request()->gender,
@@ -135,7 +117,7 @@ class pegawaiController extends Controller
             'jabatan_id' => 'required',
             'email' => 'required',
             'no_tlp' => 'required',
-            'alamat' => 'required',
+            'alamat_pegawai' => 'required',
             'tgl_masuk' => 'required',
             'tmp_lahir' => 'required',
             'gender' => 'required',
@@ -152,7 +134,7 @@ class pegawaiController extends Controller
             'jabatan_id.required' => ' wajib di isi',
             'email.required' => ' wajib di isi',
             'no_tlp.required' => ' wajib di isi',
-            'alamat.required' => ' wajib di isi',
+            'alamat_pegawai.required' => ' wajib di isi',
             'tgl_masuk.required' => ' wajib di isi',
             'tmp_lahir.required' => ' wajib di isi',
             'gender.required' => ' wajib di isi',
@@ -177,7 +159,7 @@ class pegawaiController extends Controller
             'jabatan_id' =>  Request()->jabatan_id,
             'email' =>  Request()->email,
             'no_tlp' =>  Request()->no_tlp,
-            'alamat' =>  Request()->alamat,
+            'alamat_pegawai' =>  Request()->alamat_pegawai,
             'tgl_masuk' => Request()->tgl_masuk,
             'tmp_lahir' => Request()->tmp_lahir,
             'gender' =>  Request()->gender,
@@ -197,7 +179,7 @@ class pegawaiController extends Controller
             'jabatan_id' =>  Request()->jabatan_id,
             'email' =>  Request()->email,
             'no_tlp' =>  Request()->no_tlp,
-            'alamat' =>  Request()->alamat,
+            'alamat_pegawai' =>  Request()->alamat_pegawai,
             'tgl_masuk' => Request()->tgl_masuk,
             'tmp_lahir' => Request()->tmp_lahir,
             'gender' =>  Request()->gender,
@@ -257,7 +239,7 @@ class pegawaiController extends Controller
     $pegawai->jabatan_id = $request->input('jabatan_id');
     $pegawai->email = $request->input('email');
     $pegawai->no_tlp = $request->input('no_tlp');
-    $pegawai->alamat = $request->input('alamat');
+    $pegawai->alamat_pegawai = $request->input('alamat_pegawai');
     $pegawai->tgl_masuk = $request->input('tgl_masuk');
     $pegawai->tmp_lahir = $request->input('tmp_lahir');
     $pegawai->id_agama = $request->input('id_agama');
@@ -314,7 +296,7 @@ public function ApiPegawaiEdit($id_pegawai)
         'jabatan_id' =>  Request()->jabatan_id,
         'email' =>  Request()->email,
         'no_tlp' =>  Request()->no_tlp,
-        'alamat' =>  Request()->alamat,
+        'alamat_pegawai' =>  Request()->alamat_pegawai,
         'tgl_masuk' => Request()->tgl_masuk,
         'tmp_lahir' => Request()->tmp_lahir,
         'gender' =>  Request()->gender,
@@ -337,7 +319,7 @@ public function ApiPegawaiEdit($id_pegawai)
         'jabatan_id' =>  Request()->jabatan_id,
         'email' =>  Request()->email,
         'no_tlp' =>  Request()->no_tlp,
-        'alamat' =>  Request()->alamat,
+        'alamat_pegawai' =>  Request()->alamat_pegawai,
         'tgl_masuk' => Request()->tgl_masuk,
         'tmp_lahir' => Request()->tmp_lahir,
         'gender' =>  Request()->gender,

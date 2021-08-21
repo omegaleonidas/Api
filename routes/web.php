@@ -29,6 +29,9 @@ use App\Http\Middleware;
 
 
 
+//Route::group(['middleware'=>'Admin'],function(){
+
+
 // pegawai
 
 Route::get('/pegawai',[pegawaiController::class,'index'])->name('pegawai');;
@@ -104,8 +107,19 @@ Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
 Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
 
 
-Route::get('/report/{id_absensi}',[printController::class,'detailAbsensi'])->name('print');;
 
+Route::get('/report/detail/{id_absensi}',[printController::class,'detailAbsensi']);
+Route::get('/report',[printController::class,'index'])->name('print');;
+Route::get('/report/detailPDF/{id_absensi}',[printController::class,'printPDF']);
 
 
 Auth::routes();
+
+
+
+
+
+
+
+//});
+

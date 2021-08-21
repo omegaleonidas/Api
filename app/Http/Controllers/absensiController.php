@@ -8,9 +8,10 @@ use App\models\absensimodel;
 class absensiController extends Controller
 {
     public function __construct(){
-        $this-> absensiModel = new absensiModel();
         $this->middleware('auth');
 
+        $this-> absensiModel = new absensiModel();
+     
     }
 
     public function index(){

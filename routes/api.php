@@ -26,31 +26,39 @@ use App\Http\Controllers\absensiController;
 Route::group(['middleware' => 'auth:sanctum'], function(){
 
  
-
+//pegawai
     Route::post('/ApiPegawai',[ApiPegawai::class,'insert']);
-    Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);
-    Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);
+    Route::post('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);  
+    Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']); 
+   
+
+    //absensi
     Route::get('/ApiAbsensiShow',[absensiController::class,'ApiAbsensiShow']);
     Route::get('/detailAbsensiShow/{id_pegawai}',[absensiController::class,'detailAbsensiShow']);
     Route::post('/ApiAbsensi',[absensiController::class,'ApiAbsensi']); 
-    // Route::post('/InsertDataSore/{}',[absensiController::class,'ApiAbsensi']); 
     Route::put('/ApiAbsensiEdit/{id_absensi}',[absensiController::class,'ApiAbsensiEdit']);  
+    Route::get('/ApiHitung/{id_pegawai}',[absensicontroller::class,'ApiHitung']);
   
-   // Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
+
+
+    //cuti
+    Route::post('/ApiCutiTambah',[cutiController::class,'ApiCutiTambah']);
+
+    //jabatan
+    Route::post('/ApiJabatanAdd',[jabatanController::class,'ApiJabatanAdd']);
+
     
 
-    Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
+    //Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
 
 
 
-    Route::get('/ApiHitung/{id_pegawai}',[absensicontroller::class,'ApiHitung']);
 
 
+    //informasi
     Route::get('/ApiInformasiShow',[informasiController::class,'ApiInformasiShow']);
-    Route::get('/pegawaiShow/{id_pegawai}',[pegawaiController::class,'ApiPegawaiShow']); 
-    Route::post('/ApiPegawaiEdit/{id_pegawai}',[pegawaiController::class,'ApiPegawaiEdit']);  
-    Route::put('/ApiPegawaTambah',[pegawaiController::class,'ApiPegawaiTambah']);  
- 
+   
+ //logout
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
@@ -60,7 +68,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
   
 
 
-
+//login
 Route::post('/login', [AuthController::class, 'login']);
 
 

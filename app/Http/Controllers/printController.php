@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\absensimodel;
+use Dompdf\Dompdf;
 
 class printController extends Controller
 {
@@ -19,7 +20,7 @@ class printController extends Controller
     public function index(){
 
         $data = [
-            'absensi' => $this->absensiModel->alldata(),
+            'absensi' => $this->absensiModel->detailDataShow(),
         ];
         return view ('print.v_print',$data);
     }
@@ -38,7 +39,32 @@ class printController extends Controller
         $data = [
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
         ];
-        return view ('print.v_print',$data);
+        return view ('print.v_detailPrint',$data);
+
+    }
+
+    public function printPDF($id_absensi){
+
+        if( !$this->absensiModel->detailDataRiwayat($id_absensi)){
+            abort(404);
+        }
+
+        $data = [
+            'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+        ];
+        $html= view ('print.v_detailPrint',$data);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+        
+        // Render the HTML as PDF
+        $dompdf->render();
+        
+        // Output the generated PDF to Browser
+        $dompdf->stream();
 
     }
   

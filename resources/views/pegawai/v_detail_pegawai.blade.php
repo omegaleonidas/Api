@@ -40,7 +40,7 @@
 <tr>
 <th width="100px" > alamat </th>
 <th width="30pxpx" > : </th>
-<th  >  {{$pegawai-> alamat}}</th>
+<th  >  {{$pegawai-> alamat_pegawai}}</th>
 </tr>
 
 <tr>

@@ -29,6 +29,14 @@ class absensiModel extends Model
 
     }
 
+    public function detailDataShow(){
+      return  DB::table('t_pegawai')
+   
+
+      ->get();
+
+  }
+
     
     public function editData($id_absensi,$data){
       return  DB::table('t_absensi') ->where('id_absensi',$id_absensi) ->update($data);
