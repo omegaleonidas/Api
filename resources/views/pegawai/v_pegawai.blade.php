@@ -1,11 +1,12 @@
 @extends('layout.v_template')
 
+@section('title','pegawai')
 @section('content')
   
 
 <table class="table table-boardered">
 <a href="/pegawai/add" class="btn btn-sm btn-primary" > tambah </a>
-<a href="/pegawai/print"  target="black"> print pdf</a>
+
 
 
 
@@ -23,8 +24,8 @@
     <tr>
     <th>no </th>
     <th>nip</th>
-    <th>nama_peg</th>
-    <th>foto</th>
+    <th>nama pegawai</th>
+   
    <th>aksi</th>
     </tr>
 </thead>
@@ -41,7 +42,7 @@
             <td>{{$data -> nip}}</td>
             <td>{{$data -> nama_pegawai}}</td>
          
-            <td> <img src="{{url('foto_pegawai/'.$data->foto)}}" width="100px" alt=""> </td> 
+          
             
          
           

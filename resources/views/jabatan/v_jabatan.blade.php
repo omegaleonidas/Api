@@ -1,5 +1,5 @@
 @extends('layout.v_template')
-
+@section('title','jabatan')
 @section('content')
   
 

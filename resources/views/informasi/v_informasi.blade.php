@@ -1,9 +1,10 @@
 @extends('layout.v_template')
 
+@section('title','informasi')
 @section('content')
   
 
-<table class="table table-boardered">
+<table id="example1" class="table table-boardered" >
 <a href="/informasi/add" class="btn btn-sm btn-primary" > tambah </a>
 
 @if(session('pesan'))

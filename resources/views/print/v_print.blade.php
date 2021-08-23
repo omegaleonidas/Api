@@ -1,10 +1,16 @@
 
 
-@extends('layout.v_template')
 
+
+@extends('layout.v_template')
+@section('title','laporan absensi')
 @section('content')
   
-<table class="table table-boardered">
+<div class="card" >
+
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 
 <thead>
     <tr>
@@ -47,4 +53,9 @@
 
 </table >
 
+
+
+</div>
+</div>
 @endsection
+

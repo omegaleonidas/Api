@@ -1,6 +1,7 @@
 
 
 @extends('layout.v_template')
+@section('title','absensi')
 
 @section('content')
   
@@ -10,7 +11,7 @@
 <thead>
     <tr>
     <th>no </th>
-    <th>nama pegawai</th>
+    <th>nip</th>
     <th>tanggal</th>
     <th>jam masuk</th>
     <th>jam pulang </th>

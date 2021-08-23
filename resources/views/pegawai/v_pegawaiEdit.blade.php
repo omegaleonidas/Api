@@ -63,7 +63,7 @@
 
 <div class="form-group">
     <label >no telepon</label>
-    <input name="no_tlp" class="form-control @error('no_tlp') is-invalid @enderror"  value="{{$pegawai -> nama_pegawai}}" >
+    <input name="no_tlp" class="form-control @error('no_tlp') is-invalid @enderror"  value="{{$pegawai -> no_tlp}}" >
     <div class="text-danger">
         @error('no_tlp')
             {{$message}}
@@ -73,10 +73,10 @@
 </div>
 
 <div class="form-group">
-    <label >alamat</label>
-    <input name="alamat" class="form-control @error('alamat') is-invalid @enderror"  value="{{$pegawai -> alamat}}" >
+    <label >alamat_pegawai</label>
+    <input name="alamat_pegawai" class="form-control @error('alamat_pegawai') is-invalid @enderror"  value="{{$pegawai -> alamat_pegawai}}" >
     <div class="text-danger">
-        @error('alamat')
+        @error('alamat_pegawai')
             {{$message}}
         @enderror
 </div>
@@ -136,7 +136,7 @@
 
 <div class="form-group">
     <label >pendidikan</label>
-    <input name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror"  value="{{$pegawai -> nama_pegawai}}" >
+    <input name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror"  value="{{$pegawai -> pendidikan}}" >
     <div class="text-danger">
         @error('pendidikan')
             {{$message}}
