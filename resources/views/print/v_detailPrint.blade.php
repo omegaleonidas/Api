@@ -49,6 +49,7 @@
     <!-- title row -->
 <h1 >Laporan Riwayat absensi </h1>
     <div class="row">
+    {{$absensi-> nip}}
       <div class="col-12">
        
    
