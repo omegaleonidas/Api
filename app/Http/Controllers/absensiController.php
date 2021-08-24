@@ -112,6 +112,14 @@ class absensiController extends Controller
         ];
         return view ('absensi.v_absensi',$data);
     }
+
+    public function dataAbsensiUser($id_absensi){
+
+        $data = [
+            'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+        ];
+        return view ('absensi.v_absensiUser',$data);
+    }
      public function ApiAbsensiShow()
      {
        $data = [

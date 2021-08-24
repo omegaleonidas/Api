@@ -73,7 +73,7 @@ class RegisterController extends Controller
  
 
 
-    use RegistersUsers;
+    // use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -125,7 +125,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        return view ('user.v_user',$data);
+        return redirect()->route('user')->with('pesan','Data berhasil di simpan');
 
         
     }

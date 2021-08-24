@@ -29,7 +29,7 @@ use App\Http\Middleware;
 
 
 
-//Route::group(['middleware'=>'Admin'],function(){
+Route::group(['middleware'=>'Admin'],function(){
 
 
 // pegawai
@@ -73,6 +73,25 @@ Route::get('/agama/edit/{id_agama}',[agamaController::class,'edit']);;
 Route::post('/agama/update/{id_agama}',[agamaController::class,'update']);;
 Route::get('/agama/delete/{id_agama}',[agamaController::class,'delete']);;
 
+Route::get('/user',[RegisterController::class,'index'])->name('user');;
+    Route::get('/user/detail/{id_user}',[RegisterController::class,'detailUser']);;
+    Route::get('/user/add',[RegisterController::class,'tambah']);;
+    Route::post('/user/insert',[RegisterController::class,'create']);;
+    Route::get('/user/edit/{id_user}',[RegisterController::class,'edit']);;
+    Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
+    Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
+    
+
+    //informasi
+Route::get('/informasi',[informasiController::class,'index'])->name('informasi');;
+Route::get('/informasi/detail/{id_informasi}',[informasiController::class,'detailinformasi']);;
+Route::get('/informasi/add',[informasiController::class,'tambah']);;
+Route::post('/informasi/insert',[informasiController::class,'insert']);;
+Route::get('/informasi/edit/{id_informasi}',[informasiController::class,'edit']);;
+Route::post('/informasi/update/{id_informasi}',[informasiController::class,'update']);;
+Route::get('/informasi/delete/{id_informasi}',[informasiController::class,'delete']);;
+
+
 
 
 //jabatan
@@ -98,14 +117,6 @@ Route::get('/cuti/delete/{id_cuti}',[cutiController::class,'delete']);;
 
 
 //user
-Route::get('/user',[RegisterController::class,'index'])->name('user');;
-Route::get('/user/detail/{id_user}',[RegisterController::class,'detailUser']);;
-Route::get('/user/add',[RegisterController::class,'tambah']);;
-Route::post('/user/insert',[RegisterController::class,'create']);;
-Route::get('/user/edit/{id_user}',[RegisterController::class,'edit']);;
-Route::post('/user/update/{id_user}',[RegisterController::class,'update']);;
-Route::get('/user/delete/{id_user}',[RegisterController::class,'delete']);;
-
 
 
 Route::get('/report/detail/{id_absensi}',[printController::class,'detailAbsensi']);
@@ -113,13 +124,24 @@ Route::get('/report',[printController::class,'index'])->name('print');;
 Route::get('/report/detailPDF/{id_absensi}',[printController::class,'printPDF']);
 
 
+
+
+
+
+
+
+
+
+});
+
+
 Auth::routes();
 
+Route::group(['middleware'=>'user'],function(){
 
 
-
-
-
-
-//});
-
+//cuti
+Route::get('/dataAbsensiUser/{{{Auth::user()->nip}}',[absensiController::class,'dataAbsensiUser']);
+Route::get('/home/{{{Auth::user()->nip}}', [App\Http\Controllers\HomeController::class, 'dataAbsensiUser'])->name('home');
+    
+});
