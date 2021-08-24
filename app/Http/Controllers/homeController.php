@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\absensimodel;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this-> absensiModel = new absensiModel();
+     
     }
 
     /**
@@ -24,5 +27,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('layout.v_template');
+    }
+
+    public function dataAbsensiUser($id_absensi){
+
+        $data = [
+            'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+        ];
+        return view ('absensi.v_absensiUser',$data);
     }
 }

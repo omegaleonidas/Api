@@ -4,8 +4,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Invoice Print</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+<style>
+    @page { size: A4 }
+  
+    h1 {
+        font-weight: bold;
+        font-size: 20pt;
+        text-align: center;
+    }
+  
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+  
+    .table th {
+        padding: 8px 8px;
+        border:1px solid #000000;
+        text-align: center;
+    }
+  
+    .table td {
+        padding: 3px 3px;
+        border:1px solid #000000;
+    }
+  
+    .text-center {
+        text-align: center;
+    }
+</style>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -18,11 +47,11 @@
   <!-- Main content -->
   <section class="invoice">
     <!-- title row -->
-
-    Laporan Riwayat absensi
+<h1 >Laporan Riwayat absensi </h1>
     <div class="row">
       <div class="col-12">
        
+   
  
 
       </div>

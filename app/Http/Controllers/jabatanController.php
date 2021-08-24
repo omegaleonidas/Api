@@ -9,7 +9,7 @@ class jabatanController extends Controller
 {
     public function __construct(){
         $this-> jabatanModel = new jabatanModel();
-      //  $this->middleware('auth');
+        $this->middleware('auth');
 
     }
 

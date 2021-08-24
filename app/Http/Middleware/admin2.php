@@ -19,6 +19,6 @@ class admin2
         if(Auth::check() && Auth::User()->level==1){
             return $next($request);
         }
-        return redirect()->route('login')->with('error',"You don't have an access");
+        return redirect('/');
     }
 }

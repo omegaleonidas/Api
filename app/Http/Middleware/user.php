@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use Auth;
 class user
 {
     /**
@@ -17,9 +17,9 @@ class user
     public function handle(Request $request, Closure $next)
     {
 
-        if(auth()->user()->level==3){
+        if(Auth::check() && Auth::User()->level==3){
             return $next($request);
         }
-        return redirect('/');
+         return view ('/');
 }
 }

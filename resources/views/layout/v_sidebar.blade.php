@@ -7,15 +7,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item" class="{{request()->is('/') ?  'active' : ''}}" >
-            <a href="/dasboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-            
-                Dashboard
-              
-         
-              
-         
-            </a>
+           
 
             </li>
             <li  class="nav-item" class="{{request()->is('/absensi') ?  'active' : ''}}" >

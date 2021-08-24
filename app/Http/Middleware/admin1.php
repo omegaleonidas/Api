@@ -16,7 +16,7 @@ class admin1
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->level==2){
+        if(Auth::check() && Auth::User()->level==2){
             return $next($request);
         }
         return redirect('/absensi');

@@ -6,7 +6,11 @@
 @section('content')
   
 
-<table class="table table-boardered">
+<div class="card" >
+
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 
 <thead>
     <tr>
@@ -77,6 +81,8 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+</div>
+</div>
       @endforeach
 
 @endsection

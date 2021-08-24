@@ -9,7 +9,7 @@ class informasiController extends Controller
 {
     public function __construct(){
         $this-> informasiModel = new informasiModel();
-    //   $this->middleware('auth');
+       $this->middleware('auth');
 
     }
 

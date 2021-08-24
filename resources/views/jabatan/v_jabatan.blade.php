@@ -3,7 +3,11 @@
 @section('content')
   
 
-<table class="table table-boardered">
+<div class="card" >
+
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 <a href="/jabatan/add" class="btn btn-sm btn-primary" > tambah </a>
 
 @if(session('pesan'))
@@ -75,6 +79,8 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      <div>
+</div>
       @endforeach
 
 @endsection

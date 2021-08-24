@@ -2,8 +2,11 @@
 
 @section('content')
   
+<div class="card" >
 
-<table class="table table-boardered">
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 <a href="/user/add" class="btn btn-sm btn-primary" > tambah </a>
 
 @if(session('pesan'))
@@ -81,6 +84,8 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+</div>
+</div>
       @endforeach
 
 @endsection

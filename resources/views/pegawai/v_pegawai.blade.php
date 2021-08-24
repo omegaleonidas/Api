@@ -3,8 +3,11 @@
 @section('title','pegawai')
 @section('content')
   
+<div class="card" >
 
-<table class="table table-boardered">
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 <a href="/pegawai/add" class="btn btn-sm btn-primary" > tambah </a>
 
 
@@ -93,6 +96,8 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+</div>
+</div>
       @endforeach
 
 @endsection

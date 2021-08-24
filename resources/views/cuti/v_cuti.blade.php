@@ -2,8 +2,11 @@
 @section('title','cuti')
 @section('content')
   
+<div class="card" >
 
-<table class="table table-boardered">
+<div class="card-header" >
+
+<table id="table1" class="table table-bordered table-striped">
 
 
 @if(session('pesan'))
@@ -83,6 +86,8 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+</div>
+</div>
       @endforeach
 
 @endsection

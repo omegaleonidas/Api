@@ -10,7 +10,7 @@ class pegawaiController extends Controller
 {
     public function __construct(){
         $this-> pegawaiModel = new pegawaiModel();
-      //  $this->middleware('auth');
+        $this->middleware('auth');
 
     }
 
