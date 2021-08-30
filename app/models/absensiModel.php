@@ -50,6 +50,13 @@ class absensiModel extends Model
     return  DB::table('t_absensi') ->where('nip', $id_absensi) ->get() ;
 }
 
+public function detailDataRiwayat1($id_absensi){
+  return  DB::table('t_absensi')
+  ->leftJoin('t_pegawai', 't_absensi.nip', '=', 't_pegawai.nip')
+  ->where('t_absensi.nip',$id_absensi)->first();
+
+}
+
     public function addData($data) {
       return  DB::table('t_absensi')->insert($data);
     }

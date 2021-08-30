@@ -5,10 +5,45 @@
 @extends('layout.v_template')
 @section('title','laporan absensi')
 @section('content')
-  
+
+
 <div class="card" >
+    
 
 <div class="card-header" >
+
+<div class="row">
+    <div class ="form-group ">
+
+    <label > pilih tanggal </label>
+    <div class="input-group">
+<input type="date" class="form-control" name ="tglAwal" value=>
+
+
+
+    </div>
+
+
+
+    </div>
+   
+
+
+
+</div>
+
+<div class="row">
+    <div class ="form-group ">
+
+    <label > pilih tanggal </label>
+    <div class="input-group">
+<input type="date" class="form-control" name ="tglAwal" value="">
+
+
+    </div>  
+    </div>
+   </div>
+
 
 <table id="table1" class="table table-bordered table-striped">
 
@@ -41,6 +76,8 @@
             <td>
             <a href="/report/detail/{{$data -> nip}}" class="btn btn-sm btn-success" > print </a>
             <a href="/report/detailPDF/{{$data -> nip}}" class="btn btn-sm btn-success" > PDF </a>
+
+          
             
             </td>
         

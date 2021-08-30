@@ -58,9 +58,23 @@ class user extends Authenticatable
         return  DB::table('users')->where('id', $id_user)->first();
       }
 
+      public function addData($data){
+        return  DB::table('users')->insert($data);
+    }
+
       public function editData($id_user,$data){
         return  DB::table('users')  ->where('id',$id_user) ->update($data);
     }
+
+
+
+    public function editDataProfile($id_user,$data){
+        return  DB::table('users')  ->where('id',$id_user) ->update($data);
+    }
+
+    
+
+
 
     public function deleteData($id_user){
         return  DB::table('users')  ->where('id',$id_user) ->delete();

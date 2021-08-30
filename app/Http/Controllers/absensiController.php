@@ -118,6 +118,7 @@ class absensiController extends Controller
         $data = [
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
         ];
+
         return view ('absensi.v_absensiUser',$data);
     }
      public function ApiAbsensiShow()
@@ -125,6 +126,9 @@ class absensiController extends Controller
        $data = [
            'absensi' => $this ->absensiModel->alldata(),
         ];
+        date_default_timezone_set('Asia/Jakarta');
+    
+             $date = date('H:i:s');
 
        if ($data) {
             
@@ -132,6 +136,7 @@ class absensiController extends Controller
             'success' => true,
             'message' => 'informasi ditampilkan !',
             'data' => $data
+
         ], 201);
     } else {
         return response()->json([
@@ -313,7 +318,25 @@ class absensiController extends Controller
 
 }
 
+public function time(){
+    date_default_timezone_set('Asia/Jakarta');
+    
+    $date = [
 
+        'Hour'=>Date('H'),
+        'minute'=>Date('i'),
+        'jam'=>Date('H:i:s'),
+        'date'=>Date('Y-m-d'),
+        'date_time'=>Date('Y-m-d H:i:s')
+
+
+
+    ];
+    return response()->json([
+       
+        'data' => $date
+    ], 201); 
+}
 
 public function ApiHitung($id_absensi){
 

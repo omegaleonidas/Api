@@ -17,7 +17,7 @@ class user
     public function handle(Request $request, Closure $next)
     {
 
-        if(Auth::check() && Auth::User()->level==3){
+        if(Auth::check() && Auth::User()->level==2){
             return $next($request);
         }
          return view ('/');

@@ -64,6 +64,7 @@ class pegawaiModel extends Model
     public function editDataApi($id_pegawai,$data){
       return  DB::table('t_pegawai')
                  ->where('nip',$id_pegawai) ->update($data);
+      
   }
 
 

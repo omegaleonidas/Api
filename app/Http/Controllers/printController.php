@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\absensimodel;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\DB;
 
 class printController extends Controller
 {
@@ -36,9 +37,12 @@ class printController extends Controller
             abort(404);
         }
 
+
         $data = [
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+            'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi)
         ];
+
         return view ('print.v_detailPrint',$data);
 
     }
@@ -66,6 +70,18 @@ class printController extends Controller
         // Output the generated PDF to Browser
         $dompdf->stream();
 
+    }
+
+     public function Tanggal(Request $request)
+    {
+
+      
+        $data1 = DB::table('t_absensi')
+           ->whereBetween('tanggal', [$request->tglAwal,$request->tglAkhir])
+           ->get();
+
+            return view ('print.v_detailPrint',$data1);
+      
     }
   
 }

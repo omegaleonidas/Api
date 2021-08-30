@@ -73,7 +73,7 @@ class RegisterController extends Controller
  
 
 
-    // use RegistersUsers;
+     use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -187,9 +187,32 @@ class RegisterController extends Controller
         return redirect()->route('user')->with('pesan','Data berhasil di hapus');
      }
 
-    
+       public function updateProfile($id_user){
+ 
+        $data = [
+            'name' => Request()->name,
+            'nip' => Request()->nip,
+            'nohp' => Request()->nohp,
+            'email' => Request()->email,
+            'password' => Hash::make(Request()->password),
+        ];
+        $this ->userModel->editDataProfile($id_user,$data);
+     
+        if ($data) {
+           
+            return response()->json([
+                'success' => true,
+                'message' => 'user update!',
+                'data' => $data
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'user tidak di ditampilkan',
+            ], 400);
+        }
+     }
 
-   
 
 
 }

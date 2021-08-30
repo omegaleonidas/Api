@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\informasiModel;
+//use DateTime;
 
 class informasiController extends Controller
 {
@@ -17,6 +18,7 @@ class informasiController extends Controller
 
         $data = [
             'informasi' => $this->informasiModel->alldata(),
+
         ];
         return view ('informasi.v_informasi',$data);
     }
@@ -161,8 +163,8 @@ public function apiInformasiShow()
     $data = [
         'informasi' => $this->informasiModel->alldata(),
     ];
-   
-
+    
+    
     if ($data) {
             
         return response()->json([

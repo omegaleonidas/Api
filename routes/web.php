@@ -116,12 +116,13 @@ Route::post('/cuti/update/{id_cuti}',[cutiController::class,'update']);;
 Route::get('/cuti/delete/{id_cuti}',[cutiController::class,'delete']);;
 
 
-//user
+
 
 
 Route::get('/report/detail/{id_absensi}',[printController::class,'detailAbsensi']);
 Route::get('/report',[printController::class,'index'])->name('print');;
 Route::get('/report/detailPDF/{id_absensi}',[printController::class,'printPDF']);
+Route::get('/report/tanggal',[printController::class,'Tanggal']);
 
 
 
@@ -140,6 +141,8 @@ Auth::routes();
 Route::group(['middleware'=>'user'],function(){
 
 
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/',[HomeController::class,'index']);
 //cuti
 Route::get('/dataAbsensiUser/{{{Auth::user()->nip}}',[absensiController::class,'dataAbsensiUser']);
 Route::get('/home/{{{Auth::user()->nip}}', [App\Http\Controllers\HomeController::class, 'dataAbsensiUser'])->name('home');
