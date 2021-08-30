@@ -9,6 +9,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\cutiController;
 use App\Http\Controllers\jabatanController;
 use App\Http\Controllers\informasiController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\absensiController;
 
 
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/ApiAbsensi',[absensiController::class,'ApiAbsensi']); 
     Route::put('/ApiAbsensiEdit/{id_absensi}',[absensiController::class,'ApiAbsensiEdit']);  
     Route::get('/ApiHitung/{id_pegawai}',[absensicontroller::class,'ApiHitung']);
+    Route::get('/time',[absensicontroller::class,'time']);
   
 
 
@@ -52,7 +54,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //Route::put('/updateById/{id_pegawai}',[ApiPegawai::class,'updateById']);
 
 
-
+    Route::post('/updateProfile/{id_pegawai}',[RegisterController::class,'updateProfile']);  
+    
 
 
     //informasi
