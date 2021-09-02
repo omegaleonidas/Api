@@ -3,7 +3,7 @@
 @section('content')
   
 
-<form   method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
+<form   method="POST" action="/user/insert"  enctype="multipart/form-data">
 @csrf
 
 

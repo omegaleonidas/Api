@@ -19,6 +19,6 @@ class admin2
         if(Auth::check() && Auth::User()->level==1){
             return $next($request);
         }
-        return redirect('/');
+        return abort(404);
     }
 }

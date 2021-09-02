@@ -20,6 +20,6 @@ class user
         if(Auth::check() && Auth::User()->level==2){
             return $next($request);
         }
-         return view ('/');
+         return  abort(404);
 }
 }

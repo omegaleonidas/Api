@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\controllersUser;
 
 
 use Illuminate\Http\Request;
 use App\models\absensimodel;
+use App\Http\Controllers\Controller;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
 
-class printController extends Controller
+class printController1 extends Controller
 {
    
 
@@ -23,14 +24,14 @@ class printController extends Controller
         $data = [
             'absensi' => $this->absensiModel->detailDataShow(),
         ];
-        return view ('print.v_print',$data);
+        return view ('printUser.v_print',$data);
     }
 
 
 
 
     public function tampilKepegawaian(){
-        return view ('print.v_print');
+        return view ('printUser.v_print');
     }
 
 
@@ -49,7 +50,7 @@ class printController extends Controller
 
         
 
-        return view ('print.v_detailPrint',$data);
+        return view ('printUser.v_detailPrint',$data);
 
     }
     public function detailAbsensi1($id_absensi){
@@ -67,7 +68,25 @@ class printController extends Controller
 
         
 
-        return view ('print.v_detailPrint1',$data);
+        return view ('printUser.v_detailprint1',$data);
+
+    }
+    public function printHasil($id_absensi){
+
+        if( !$this->absensiModel->detailDataRiwayat($id_absensi)){
+            abort(404);
+        }
+
+
+        $data = [
+            'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
+            'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi),
+            'absensi2' => $this->absensiModel->detailDataShow()
+        ];
+
+        
+
+        return view ('printUser.printHasil',$data);
 
     }
 
@@ -83,7 +102,7 @@ class printController extends Controller
             'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi),
             'absensi2' => $this->absensiModel->detailDataShow()
         ];
-        $html= view ('print.v_detailPrint',$data);
+        $html= view ('printUser.printHasil',$data);
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
@@ -99,7 +118,7 @@ class printController extends Controller
 
     }
 
-     public function Tanggal(Request $request,$id_absensi)
+    public function Tanggal(Request $request,$id_absensi)
     {
 
         $var = $request->tglAwal;
@@ -117,13 +136,9 @@ class printController extends Controller
             ->where('nip',$id_absensi)
             ->get()
         ];
-    //     $data = DB::table('t_absensi')
-        
-    //     ->whereBetween('tanggal', [$request->tglAwal,$request->tglAkhir])
-    //   //  ->where('nip',$id_absensi)
-    //     ->get();
+    
+            return view ('printUser.printHasil',$data1);
 
-            return view ('print.v_detailPrint',$data1);
         //    if ($data1) {
         
         //     return response()->json([

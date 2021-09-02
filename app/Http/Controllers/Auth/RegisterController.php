@@ -33,20 +33,15 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
  
-     //jika falidasi tidak ada maka simpan data
-     //upload gambar 
- 
- 
-     $file= Request()->gambar;
-     $fileName = Request()->judul . '.' . $file->extension();
-     $file->move(public_path('foto_user'), $fileName);
+
  
      $data = [
-         'judul' => Request()->judul,
-         'descripsi' => Request()-> descripsi,
-         'gambar'=>  $fileName,
- 
-     ];
+        'name' => Request()->name,
+        'nip' => Request()->nip,
+        'nohp' => Request()->nohp,
+        'email' => Request()->email,
+        'password' => Hash::make(Request()->password),
+    ];
      $this ->userModel->addData($data);
      return redirect()->route('user')->with('pesan','Data berhasil di simpan');
      }

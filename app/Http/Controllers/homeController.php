@@ -24,9 +24,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     
     public function index()
     {
-        return view('layout.v_template');
+
+       return view('layout.v_template');
     }
 
     public function dataAbsensiUser($id_absensi){

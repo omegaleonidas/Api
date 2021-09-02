@@ -133,13 +133,4 @@ return  DB::table('t_absensi')  ->where([
 
 ] ) ->count();
 }
-
-
-
-
-
-
-
-
-
 }
