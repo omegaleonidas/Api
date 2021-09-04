@@ -43,6 +43,13 @@ class printController extends Controller
 
 
         $data = [
+            'alfa' => $this->absensiModel->jumlahAlfa($id_absensi),
+            'hadir' => $this->absensiModel->jumlahHadir($id_absensi),
+            'terlambat' => $this->absensiModel->jumlahTerlambat($id_absensi),
+            'cuti' => $this->absensiModel->jumlahIzin($id_absensi),
+            'alfa_sore' => $this->absensiModel->jumlahAlfaSore($id_absensi),
+            'hadir_sore' => $this->absensiModel->jumlahHadirSore($id_absensi),
+            'terlambat_sore' => $this->absensiModel->jumlahTerlambatSore($id_absensi),
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
             'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi)
         ];
@@ -60,6 +67,14 @@ class printController extends Controller
 
 
         $data = [
+            'alfa' => $this->absensiModel->jumlahAlfa($id_absensi),
+        'hadir' => $this->absensiModel->jumlahHadir($id_absensi),
+        'terlambat' => $this->absensiModel->jumlahTerlambat($id_absensi),
+        'cuti' => $this->absensiModel->jumlahIzin($id_absensi),
+        'alfa_sore' => $this->absensiModel->jumlahAlfaSore($id_absensi),
+        'hadir_sore' => $this->absensiModel->jumlahHadirSore($id_absensi),
+        'terlambat_sore' => $this->absensiModel->jumlahTerlambatSore($id_absensi),
+       
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
             'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi),
             'absensi2' => $this->absensiModel->detailDataShow()
@@ -79,6 +94,14 @@ class printController extends Controller
         }
 
         $data = [
+            'alfa' => $this->absensiModel->jumlahAlfa($id_absensi),
+        'hadir' => $this->absensiModel->jumlahHadir($id_absensi),
+        'terlambat' => $this->absensiModel->jumlahTerlambat($id_absensi),
+        'cuti' => $this->absensiModel->jumlahIzin($id_absensi),
+        'alfa_sore' => $this->absensiModel->jumlahAlfaSore($id_absensi),
+        'hadir_sore' => $this->absensiModel->jumlahHadirSore($id_absensi),
+        'terlambat_sore' => $this->absensiModel->jumlahTerlambatSore($id_absensi),
+       
             'absensi' => $this->absensiModel->detailDataRiwayat($id_absensi),
             'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi),
             'absensi2' => $this->absensiModel->detailDataShow()
@@ -109,37 +132,89 @@ class printController extends Controller
 
 
         $data1 = [
+            'alfa' =>  DB::table('t_absensi') 
+            ->whereBetween('tanggal', [$var,$var1])
+            ->where([
+                ['nip', $id_absensi],
+                ['keterangan', '=', 'alfa' ],
+      
+      
+            ] ) ->count(),
             
+            'hadir' =>  DB::table('t_absensi') 
+            ->whereBetween('tanggal', [$var,$var1]) 
+            ->where([
+                ['nip',  $id_absensi ],
+                ['keterangan', '=', 'hadir' ],
+        
+        
+            ] ) ->count(),
+            'terlambat' => DB::table('t_absensi') 
+            ->whereBetween('tanggal', [$var,$var1]) 
+            ->where([
+                ['nip',  $id_absensi ],
+                ['keterangan', '=', 'terlambat' ],
+        
+        
+            ] ) ->count(),
+            'cuti' =>  DB::table('t_cuti') 
+            ->whereBetween('tanggal', [$var,$var1]) 
+            ->where([
+                ['nip',  $id_absensi  ]
+               
+          
+          
+            ] ) ->count(),
+            'alfa_sore' => DB::table('t_absensi') 
+            ->whereBetween('tanggal', [$var,$var1]) 
+            ->where([
+                ['nip', $id_absensi],
+                ['keterangan_sore', '=', 'alfa' ],
+          
+          
+            ] ) ->count(),
+            'hadir_sore' =>  DB::table('t_absensi') 
+            ->whereBetween('tanggal', [$var,$var1]) 
+            ->where([
+                ['nip',  $id_absensi ],
+                ['keterangan_sore', '=', 'hadir' ],
+            
+            
+            ] ) ->count(),
+            'terlambat_sore' => $this->absensiModel->jumlahTerlambatSore($id_absensi),
+           
            'absensi1' => $this->absensiModel->detailDataRiwayat1($id_absensi),
             'absensi' =>DB::table('t_absensi')
         
+
+
             ->whereBetween('tanggal', [$var,$var1])
             ->where('nip',$id_absensi)
             ->get()
         ];
-    //     $data = DB::table('t_absensi')
-        
-    //     ->whereBetween('tanggal', [$request->tglAwal,$request->tglAkhir])
-    //   //  ->where('nip',$id_absensi)
-    //     ->get();
 
-            return view ('print.v_detailPrint',$data1);
-        //    if ($data1) {
-        
-        //     return response()->json([
-        //         'success' => true,
-        //         'message' => 'data Berhasil ditampilkan !',
-        //         'data' => $data1
-        //     ], 201);
-        // } else {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'data tidak ditampilkan',
-        //     ], 400);
-        //    echo("error");
-        // }
+
+    $html= view ('print.v_detailPrint',$data1);
+
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($html);
     
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'landscape');
+    
+    // Render the HTML as PDF
+    $dompdf->render();
+    
+    // Output the generated PDF to Browser
+    $dompdf->stream();
+
+
+         
+       
 
     }
+
+
+   
   
 }

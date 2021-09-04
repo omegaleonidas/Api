@@ -38,7 +38,7 @@
 <div class="input-group">
 <input type="date" class="form-control" name ="tglAkhir" placeholder=" 0000-00-00">
 
-<button  class="btn btn-primary btn-sm" >simpan1</button>
+<button  class="btn btn-primary btn-sm" >cetak</button>
     </div> 
 
  
