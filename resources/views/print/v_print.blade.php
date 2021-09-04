@@ -12,46 +12,13 @@
 
 <div class="card-header" >
 
-<div class="row">
-    <div class ="form-group ">
-<form action="/report/tanggal" method="POST"  enctype="multipart/form-data">
 
 
 
-<label > pilih tanggal </label>
-    <div class="input-group">
-<input type="date" class="form-control" name ="tglAwal" value=>
-<div class="form-group">
-    <button  class="btn btn-primary btn-sm" >simpan</button>
-</div> 
-
-</form>
-
-    
-
-
-    </div>
 
 
 
-    </div>
-   
 
-
-
-</div>
-
-<div class="row">
-    <div class ="form-group ">
-
-    <label > pilih tanggal </label>
-    <div class="input-group">
-<input type="date" class="form-control" name ="tglAwal" value="">
-
-
-    </div>  
-    </div>
-   </div>
 
 
 <table id="table1" class="table table-bordered table-striped">
@@ -100,7 +67,7 @@
 </table >
 
 
-
+</div>
 </div>
 </div>
 @endsection

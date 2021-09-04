@@ -366,14 +366,6 @@ public function ApiHitung($id_absensi){
         ], 400);
        echo("error");
     }
-
-
-
-
-
-
-   
-
-   
+ 
 }
 }
