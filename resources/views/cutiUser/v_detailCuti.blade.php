@@ -1,7 +1,7 @@
 @extends('layout.v_template')
 @section('title','Detail Guru')
 @section('content')
-<form  action="/cuti/update/{{$cuti -> id_cuti}}" method="POST"  enctype="multipart/form-data">
+<form  action="/cuti1/update/{{$cuti -> id_cuti}}" method="POST"  enctype="multipart/form-data">
 @csrf
 
 <table  class="table" >
@@ -11,6 +11,7 @@
 <th width="30pxpx" > : </th>
 <th  >  {{$cuti-> nama_pegawai}}</th>
 </tr>
+
 <tr>
 <th width="100px" > nip </th>
 <th width="30pxpx" > : </th>
@@ -53,7 +54,7 @@
 <input  type="hidden" name="cuti" class="form-control  @error('nip') is-invalid @enderror" value="3487"   >
 
 </div>
-<th><a href="/cuti"  class="btn btn-sm btn-success" > kembali </a></th>
+<th><a href="/cuti1"  class="btn btn-sm btn-success" > kembali </a></th>
 </tr>
 
 

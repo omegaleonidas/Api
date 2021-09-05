@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\absensiController;
 use App\Http\Controllers\controllersUser\absensiController1;
 use App\Http\Controllers\controllersUser\printController1;
+use App\Http\Controllers\controllersUser\cutiController1;
 use App\Http\Controllers\informasiController;
 use App\Http\Controllers\jabatanController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -144,13 +145,21 @@ Route::get('/',[HomeController::class,'index']);
 Auth::routes();
 
 Route::group(['middleware'=>'user'],function(){
-    Route::get('/absensi1',[absensiController1::class,'index'])->name('absensi1');
-    Route::get('/absensi1/detail/{id_absensi}',[absensiController1::class,'detailAbsensi']);;
-    Route::post('/absensi1/add',[absensiController1::class,'tambah']);;
-    Route::get('/absensi1/edit/{id_absensi}',[absensiController1::class,'edit']);;
-    Route::post('/absensi1/update/{id_absensi}',[absensiController1::class,'update']);;
-    Route::get('/absensi1/delete/{id_absensi}',[absensiController1::class,'delete']);;
+Route::get('/absensi1',[absensiController1::class,'index'])->name('absensi1');
+Route::get('/absensi1/detail/{id_absensi}',[absensiController1::class,'detailAbsensi']);;
+Route::post('/absensi1/add',[absensiController1::class,'tambah']);;
+Route::get('/absensi1/edit/{id_absensi}',[absensiController1::class,'edit']);;
+Route::post('/absensi1/update/{id_absensi}',[absensiController1::class,'update']);;
+Route::get('/absensi1/delete/{id_absensi}',[absensiController1::class,'delete']);;
   
+
+
+Route::get('/cuti1',[cutiController1::class,'index'])->name('cuti1');;
+Route::get('/cuti1/detail/{id_absen}',[cutiController1::class,'detailcuti']);;
+Route::get('/cuti1/edit/{id_cuti}',[cutiController1::class,'edit']);;
+Route::post('/cuti1/update/{id_cuti}',[cutiController1::class,'update']);;
+Route::get('/cuti1/delete/{id_cuti}',[cutiController1::class,'delete']);;
+
 
 
 Route::get('/report1/detailPrint/{id_absensi}',[printController1::class,'printHasil']);

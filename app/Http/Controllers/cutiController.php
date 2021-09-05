@@ -90,7 +90,7 @@ class cutiController extends Controller
         Request()->validate([
           
             'nip' => 'required',
-            'lama_cuti' => 'required',
+       
             'alasan_cuti' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_akhir' => 'required',
@@ -105,7 +105,7 @@ class cutiController extends Controller
 
          $nip = $request->input('nip');
         
-        $lama_cuti = $request->input('lama_cuti');
+   
         
         $alasan_cuti = $request->input('alasan_cuti');
         
@@ -116,14 +116,13 @@ class cutiController extends Controller
         $tanggal = $request->input('tanggal');
       
 
-      
-   
+       
 
     
         $data =  [
            
             'nip' =>  $nip,
-            'lama_cuti' => $lama_cuti,
+          
             'alasan_cuti' => $alasan_cuti,
             'tanggal_mulai' => $tanggal_mulai,
             'tanggal_akhir' => $tanggal_akhir,

@@ -1,12 +1,12 @@
 <?php
-
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\controllersUser;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\models\cutiModel;
 use Illuminate\Support\Facades\Validator;
 
-class cutiController extends Controller
+class cutiController1 extends Controller
 {
     public function __construct(){
         $this-> cutiModel = new cutiModel();
@@ -19,7 +19,8 @@ class cutiController extends Controller
         $data = [
             'cuti' => $this->cutiModel->alldata(),
         ];
-        return view ('cuti.v_cuti',$data);
+
+        return view ('cutiUser.v_cuti',$data);
     }
 
     public function detailcuti($id_cuti){
@@ -31,25 +32,22 @@ class cutiController extends Controller
         $data = [
             'cuti' => $this->cutiModel->detailData($id_cuti),
         ];
-        return view ('cuti.v_detailCuti',$data);
+        return view ('cutiUser.v_detailCuti',$data);
 
     }
 
     
     public function update($id_cuti){
 
-     
- 
-    
-        $data = [
-            'acc' => 'acc'
+            $data = [
+            'acc' => 'disetujui'
            
             ];
         $this ->cutiModel->editData($id_cuti,$data);
      
  
    
-     return redirect()->route('cuti')->with('pesan','Data berhasil di ubah');
+     return redirect()->route('cuti1')->with('pesan','Data berhasil di ubah');
      }
 
     public function edit($id_cuti){
@@ -62,13 +60,9 @@ class cutiController extends Controller
             'cuti' => $this->cutiModel->detailData($id_cuti),
         ];
 
-        return view ('cuti.v_cuti',$data);
+        return view ('cutiUser.v_cuti',$data);
     }
 
-
-
-
-   
 
      public function delete($id_cuti){
 
@@ -76,7 +70,7 @@ class cutiController extends Controller
         $cuti  = $this->cutiModel->detailData($id_cuti);
      
         $this ->cutiModel->deleteData($id_cuti);
-        return redirect()->route('cuti')->with('pesan','Data berhasil di hapus');
+        return redirect()->route('cuti1')->with('pesan','Data berhasil di hapus');
      }
 
      public function ApiCutiTambah()
@@ -88,40 +82,24 @@ class cutiController extends Controller
        
         
         Request()->validate([
-          
             'nip' => 'required',
             'lama_cuti' => 'required',
             'alasan_cuti' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_akhir' => 'required',
             'tanggal' => 'required',
-        
-            
-        ],
+         ],
     );
-
     $request = Request();
 
-
-         $nip = $request->input('nip');
-        
+        $nip = $request->input('nip');
         $lama_cuti = $request->input('lama_cuti');
-        
         $alasan_cuti = $request->input('alasan_cuti');
-        
         $tanggal_mulai = $request->input('tanggal_mulai');
-        
         $tanggal_akhir = $request->input('tanggal_akhir');
-        
         $tanggal = $request->input('tanggal');
-      
-
-      
-   
-
-    
         $data =  [
-           
+            
             'nip' =>  $nip,
             'lama_cuti' => $lama_cuti,
             'alasan_cuti' => $alasan_cuti,
@@ -132,10 +110,8 @@ class cutiController extends Controller
         ];
 
         $this->cutiModel->addData($data);
-
-      
         if ($data) {
-            
+           
             return response()->json([
                 'success' => true,
                 'message' => 'data cuti Berhasil Disimpan!',
@@ -148,10 +124,6 @@ class cutiController extends Controller
             ], 400);
         }
 
-       
-    
-
      }
-
 
 }

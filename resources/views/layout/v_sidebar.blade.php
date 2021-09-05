@@ -140,9 +140,19 @@
              <i class="nav-icon fas fa-tachometer-alt"></i>
              
                absensi kepegawaian
-              
-    
-             </a>
+                </a>
+
+                </li>
+
+                <li  class="nav-item" class="{{request()->is('/cuti1') ?  'active' : ''}}" >
+           <a href="/cuti1" class="nav-link">
+             <i class="nav-icon fas fa-tachometer-alt"></i>
+             
+               cuti kepegawaian
+                </a>
+
+                </li>
+
              <li  class="nav-item" class="{{request()->is('/report1') ?  'active' : ''}}" >
           
           <a href="/report1" class="nav-link">
@@ -155,7 +165,7 @@
             
            </a>
           
-         </li>
+  
         
              </li>
 
