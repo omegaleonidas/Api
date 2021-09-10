@@ -153,7 +153,7 @@ Route::post('/absensi1/update/{id_absensi}',[absensiController1::class,'update']
 Route::get('/absensi1/delete/{id_absensi}',[absensiController1::class,'delete']);;
   
 
-
+//cuti
 Route::get('/cuti1',[cutiController1::class,'index'])->name('cuti1');;
 Route::get('/cuti1/detail/{id_absen}',[cutiController1::class,'detailcuti']);;
 Route::get('/cuti1/edit/{id_cuti}',[cutiController1::class,'edit']);;
