@@ -198,6 +198,8 @@ class printController extends Controller
 
     $dompdf = new Dompdf();
     $dompdf->loadHtml($html);
+
+    //tesr
     
     // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'landscape');
