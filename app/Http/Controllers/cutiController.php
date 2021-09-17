@@ -42,7 +42,7 @@ class cutiController extends Controller
  
     
         $data = [
-            'acc' => 'acc'
+            'acc' => 'disetujui'
            
             ];
         $this ->cutiModel->editData($id_cuti,$data);

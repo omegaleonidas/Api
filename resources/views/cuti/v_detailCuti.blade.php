@@ -59,7 +59,7 @@
 
 
 <div class="form-group">
-    <button class="btn btn-primary btn-sm" >simpan</button>
+    <button class="btn btn-primary btn-sm" >Setujui</button>
 </div>
 </table>
 

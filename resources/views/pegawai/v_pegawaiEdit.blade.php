@@ -108,13 +108,19 @@
 
 <div class="form-group">
     <label >gender</label>
-    <input name="gender" class="form-control @error('gender') is-invalid @enderror"  value="{{$pegawai -> gender}}" >
-    <div class="text-danger">
-        @error('gender')
+    <select name="gender"   class="form-control  @error('gender') is-invalid @enderror" >
+    <option value="">-Pilih-</option>
+                        
+                                <option     value="laki- laki">   laki-laki </option>
+                                <option     value="perempuan">  perempuan  </option>
+                            
+                           
+            </select>
+       <div class="text-danger">
+        @error('id_agama')
             {{$message}}
         @enderror
-</div>
-
+        </div>
 </div>
 
 <div class="form-group">
